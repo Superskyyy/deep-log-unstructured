@@ -24,7 +24,7 @@ class DataTokenizer:
         message = re.sub(r'/.*:', '', message, flags=re.MULTILINE)  # filter for endpoints
         message = re.sub(r'/.*', '', message, flags=re.MULTILINE)
         message = word_tokenize(message)  # remove non words
-        message = [word for word in message if word.isalpha()]  # remove numerical
+        message = (word for word in message if word.isalpha())  # generator  # remove numerical
         message = [word for word in message if word not in self.stop_words]  # remove nltk common stopwords
         message = ['[CLS]'] + message  # add embedding token
         for word_idx, word in enumerate(message):  # convert to value

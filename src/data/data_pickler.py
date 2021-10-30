@@ -11,28 +11,27 @@ from data_tokenizer import DataTokenizer
 folder_path = 'dataset'
 
 
-def pickle_import(template, name, normal_indicator):
+def pickle_import(template, name, normal_indicator,folder):
     """
     This is only for main data not aux
 
     """
-    message, label = DataImporter(log_template=template, dataset_folder_path=folder_path,
+    message_remained, label = DataImporter(log_template=template, dataset_folder_path=folder_path,
                                   dataset_name=name, dataset_step=1, dataset_type='main',
-                                  dataset_limit=9999999999999, normal_indicator=normal_indicator, aux_count=5000).load()
+                                  dataset_limit=999999999999, normal_indicator=normal_indicator, aux_count=5000).load()
     print(
-        f'\nSuccessfully imported - {len(message)} => {len(label)} '
-        f'Messages from dataset at {os.path.join(folder_path, name)}\n\n')
+        f'\nSuccessfully imported - remaining {len(message_remained)} => of all {len(label)} Messages from dataset at {os.path.join(folder_path, name)}\n\n')
 
-    with open(f'{name}_full_message{len(message)}', 'wb') as message_file:
-        pickle.dump(message, message_file)
-    with open(f'{name}_full_label{len(label)}', 'wb') as label_file:
+    with open(f'dataset/{folder}/{name}_chunked_msg_line_final_batch', 'wb') as message_file:
+        pickle.dump(message_remained, message_file)
+    with open(f'dataset/{folder}/{name}_full_label{len(label)}', 'wb') as label_file:
         pickle.dump(label, label_file)
-    return message, label
+    # return message, label
 
 
 def pickle_tokenize(template, name, normal_indicator):
     tokenizer = DataTokenizer()
-    log_messages, labels = pickle_import(template=template, name=name, normal_indicator=normal_indicator)
+    pickle_import(template=template, name=name, normal_indicator=normal_indicator)
     # above pickles the imported message and labels, message is further passed down to tokenize
 
     log_messages = log_messages.values.reshape(-1, 1)
@@ -54,10 +53,10 @@ def pickle_tokenize(template, name, normal_indicator):
         pickle.dump(data_tokenized_padded, tokenized_file)
 
 
-bgl_template = '<Token0> <Token1> <Token2> <Token3> <Token4> <Token5> <Token6> <Token7> <Token8> <Message>'
-
-pickle_tokenize(template=bgl_template, name='bgl2', normal_indicator='-')
-
-# thunderbird_template = '<Token0> <Token1> <Token2> <Token3> <Token4> <Token5> <Token6> <Token7> <Token8>(\[<Token9>\])?: <Message>'
+# bgl_template = '<Token0> <Token1> <Token2> <Token3> <Token4> <Token5> <Token6> <Token7> <Token8> <Message>'
 #
-# pickle_it(template=thunderbird_template, name='tbird2', normal_indicator='-')
+# pickle_tokenize(template=bgl_template, name='bgl2', normal_indicator='-')
+
+thunderbird_template = '<Token0> <Timestamp> <Date> <User> <Month> <Day> <Time> <Location> <Component>(\[<PID>\])?: <Message>'  # thunderbird
+
+pickle_import(template=thunderbird_template, name='tbird2', normal_indicator='-',folder='tbird')
