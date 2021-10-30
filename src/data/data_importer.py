@@ -1,3 +1,6 @@
+"""
+Do not run this script in Windows, it will not work due to use of signal
+"""
 import os
 import pickle
 import re
@@ -82,6 +85,7 @@ class DataImporter:
                     # print('message after tokenize ', message, log_messages)
                     # print(self.log_template_headers)
                 except TimeoutException:
+                    print("Regex hang detected, skipping")
                     continue  # catastrophic backtracking
                 except Exception as e:  # noqa
                     print(e)

@@ -2,7 +2,7 @@ import os
 import pickle
 
 import numpy as np
-from keras.preprocessing.sequence import pad_sequences
+#from keras.preprocessing.sequence import pad_sequences
 from tqdm import trange
 
 from data_importer import DataImporter
