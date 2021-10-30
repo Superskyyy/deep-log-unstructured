@@ -57,7 +57,7 @@ class DataImporter:
         true_labels = []
         with open(os.path.join(self.dataset_folder_path, self.dataset_name), 'r') as ds:
             for line_no, line in enumerate(tqdm(ds, miniters=1)):
-                if line_no != 1 and line_no % 555000000 == 1:  # 15 file chunks
+                if line_no != 1 and line_no % 20000000 == 1:  # 15 file chunks
                     with open(f'dataset/tbird/{self.dataset_name}_chunked_msg_line{line_no}', 'wb') as message_file:
                         # print(log_messages)
                         # log_messages_array = np.asanyarray(log_messages).reshape(-1, 1)
