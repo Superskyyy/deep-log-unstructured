@@ -55,7 +55,7 @@ class DataImporter:
         """
         log_messages = []
         true_labels = []
-        with open(os.path.join(self.dataset_folder_path, self.dataset_name), 'r') as ds:
+        with open(os.path.join(self.dataset_folder_path, self.dataset_name), 'r', encoding="latin-1") as ds:
             for line_no, line in enumerate(tqdm(ds, miniters=1)):
                 if line_no != 1 and line_no % 20000000 == 1:  # 15 file chunks
                     with open(f'dataset/tbird/{self.dataset_name}_chunked_msg_line{line_no}', 'wb') as message_file:
@@ -70,27 +70,28 @@ class DataImporter:
                         pickle.dump(tokenized_np, message_file)
                         log_messages = []  # reset
                 # Start the timer. Once 10 seconds are over, a SIGALRM signal is sent.
-                signal.alarm(10)
                 try:
+                    try:
+                        signal.alarm(30)
 
-                    match = self.log_template_regex.search(line.strip())
+                        match = self.log_template_regex.search(line.strip())
 
-                    if not match:
-                        continue
-                    label_decider = lambda x: 0 if x == self.normal_indicator else 1
-                    true_labels.append(label_decider(match.group('Token0')))
-                    # message = tokenizer.tokenize(match.group('Message'))
-                    # log_messages.append(message)
-                    log_messages.append(match.group('Message'))
-                    # print('message after tokenize ', message, log_messages)
-                    # print(self.log_template_headers)
+                        if not match:
+                            continue
+                        label_decider = lambda x: 0 if x == self.normal_indicator else 1
+                        true_labels.append(label_decider(match.group('Token0')))
+                        # message = tokenizer.tokenize(match.group('Message'))
+                        # log_messages.append(message)
+                        log_messages.append(match.group('Message'))
+                        # print('message after tokenize ', message, log_messages)
+                        # print(self.log_template_headers)
+                    except Exception as e:  # noqa
+                        print(e)
+                        # print(e) # will skip those without normal indications('-' OR 'warn')
+                        pass
                 except TimeoutException:
                     print("Regex hang detected, skipping")
                     continue  # catastrophic backtracking
-                except Exception as e:  # noqa
-                    print(e)
-                    # print(e) # will skip those without normal indications('-' OR 'warn')
-                    pass
                 else:
                     signal.alarm(0)
                 if line_no == self.limit:

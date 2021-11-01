@@ -35,10 +35,12 @@
 #             counter += 1
 
 with open('tbird2', 'r', encoding="latin-1") as f:
-    with open('tbird2_211212192', 'w', encoding="latin-1") as fo:
+    with open('tbird2_medium_200m_40step', 'w', encoding="latin-1") as fo:
         counter = 0
         for line in f:
-            fo.write(line)
+            if counter % 40 == 0:
+                fo.write(line)
             if counter >= 200000000:
                 break
             counter += 1
+
