@@ -28,15 +28,9 @@ The results can be evaluated by observing the F1-score, Recall, Precision and Ac
 
 ## Results [WIP]
 
-Our model achieves the following performance on :
+Our model achieves the following performance on the three target datasets used by the original paper:
 
-### [Image Classification on ImageNet](https://paperswithcode.com/sota/image-classification-on-imagenet)
-
-| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
-| ------------------ |---------------- | -------------- |
-| My awesome model   |     85%         |      95%       |
-
->📋  Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
+WIP
 
 ## To cite the original paper
 
@@ -48,7 +42,11 @@ Our model achieves the following performance on :
 }
 </code></pre>
 
+## To cite our work
+Please click on the button `Cite this repository` below the repo description. A bibitex will be generated for your convinience.
+
 ## License and contributions
-This code is released under Apache 2.0 license. 
+This code is released under MIT License.
+
 Pull requests and issues are welcomed to enhance the implementation.
 
