@@ -18,19 +18,17 @@ Baselines: We implemented two baselines used in the paper - PCA and Deeplog. Ple
  
 ## Training
 
-To train the model(s) in the paper, run this command:
-
-Run the notebook with TPU runtime and parallel execution strategy on, each epoch at batch size 512 will take less than 1min for first 5 million rows of data.
+To train the model(s) in the paper, import the notebook with TPU runtime and parallel execution strategy on, each epoch at batch size 512 will take less than 1min for first 5 million rows of data.
 
 ## Evaluation
 
-The results can be evaluated by observing the F1-score, Recall, Precision and Accuracy. 
+The results can be evaluated by observing the F1-score, Recall, Precision and Accuracy. The threshold derivation is automatically iterated and can be observed.
 
-## Results [WIP]
+## Results
 
-Our model achieves the following performance on the three target datasets used by the original paper:
+Please review the results based on our project report [NOT DISCLOSED FOR NOW]. 
 
-WIP
+Generally we have evidence to prove that the results are reproduciable (also surpassing previous state-of-the-art DeepLog) with some potential evaluation flaws.
 
 ## To cite the original paper
 
@@ -42,7 +40,7 @@ WIP
 }
 </code></pre>
 
-## To cite our work
+## To cite our reproduced work
 Please click on the button `Cite this repository` below the repo description. A bibitex will be generated for your convinience.
 
 ## License and contributions
