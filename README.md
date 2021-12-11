@@ -30,6 +30,22 @@ Please review the results based on our project report [NOT DISCLOSED FOR NOW].
 
 Generally we have evidence to prove that the results are reproduciable (also surpassing previous state-of-the-art DeepLog) with some potential evaluation flaws.
 
+## Reproducing Baselines
+
+If you want to run PCA yourself, please: 
+
+```cd baselines/PCA/code```
+
+```python main.py```
+
+
+If you want to run Deeplog: 
+
+```cd baselines/Deeplog/code```
+
+```python main.py```
+
+
 ## To cite the original paper
 
 <pre><code>@article{nedelkoski2020self,
