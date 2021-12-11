@@ -18,7 +18,7 @@ Baselines: We implemented two baselines used in the paper - PCA and Deeplog. Ple
  
 ## Training
 
-To train the model(s) in the paper, import the notebook with TPU runtime and parallel execution strategy on, each epoch at batch size 512 will take less than 1min for first 5 million rows of data.
+To train the model(s) in the paper, import the notebook with TPU runtime and parallel execution strategy on, each epoch at batch size 512 will take less than 2 mins for first 5 million rows of data.
 
 ## Evaluation
 
