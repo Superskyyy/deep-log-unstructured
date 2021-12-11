@@ -103,14 +103,6 @@ class DataImporter:
 
         self.log_dataframe = self.log_loader()
 
-        # if self.dataset_type == 'auxiliary':
-        #     print(log_messages.iloc[true_labels.flatten() == 0].shape)
-        #     print(log_messages.iloc[true_labels.flatten() == 0])
-        #     df_normal = log_messages.iloc[true_labels.flatten() == 0].sample(n=self.aux_count).values
-        #     df_anomalies = log_messages.iloc[true_labels.flatten() == 1].sample(n=self.aux_count).values
-        #     return df_normal, df_anomalies
-        # elif self.dataset_type == 'main':
-        #     return log_messages, true_labels
 
     def log_template_matcher(self):
         headers = []
