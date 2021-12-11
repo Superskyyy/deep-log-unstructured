@@ -60,7 +60,7 @@ If you want to run Deeplog:
 Please click on the button `Cite this repository` below the repo description. A bibitex will be generated for your convinience.
 
 ## License and contributions
-This code is released under MIT License.
+This code is released under GPLV3 License.
 
 Pull requests and issues are welcomed to enhance the implementation.
 
