@@ -127,7 +127,7 @@ if __name__ == '__main__':
         X, y, labels, mapping = preprocessor.csv(f"../data_small/{targetfile}_small_5m.csv")
 
     '''Hyperparameters'''
-    num_epochs = 1
+    num_epochs = 50
     num_classes = len(mapping)
     batch_size = 256
     input_size = 1
