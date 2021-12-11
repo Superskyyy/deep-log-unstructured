@@ -6,13 +6,13 @@ This repository is the **unofficial** implementation of [Self-attentive classifi
 
 ## Requirements
 
-To install requirements:
+To install requirements locally and run notebook locally, verify the dependencies in the `requirements.txt`:
 
 ```setup
 pip install -r requirements.txt
 ```
 
->📋  When using demo notebook, simply import the notebook along with the utils.py (data preprocessor) and modify the folder path to point to your [datasets](https://www.usenix.org/cfdr-data).
+When using our implementation demo, simply import the notebook at `src/model/anomaly_detection.ipynb` and modify the folder path to point to your [datasets](https://www.usenix.org/cfdr-data).
 
 Baselines: We implemented two baselines used in the paper - PCA and Deeplog. Please refer to corresponding notebooks for their specifics.
  
